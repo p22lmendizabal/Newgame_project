@@ -19,16 +19,29 @@ def board_game():
 
 #this is taking a turn from player    
 def player_turn():
-    
-    player_one_position = int(input("Player one, enter a number from one to nine: "))
-    player_one_position = player_one_position - 1
-    board[player_one_position] = 'O'
-    board_game()
-    player_two_position = int(input("Player two, enter a number from one to nine: "))
-    player_two_position = player_two_position - 1
-    board[player_two_position] = 'X'
-    board_game()
+    while True:
+        try:
+            player_one_position = int(input("Player one, enter a number from one to nine: "))
+            player_one_position = player_one_position - 1
+            if board[player_one_position] == '-':
+                board[player_one_position] = 'O'
+            elif board[player_one_position] == 'X':
+                print("That position was already taken")
+                player_one_position
+            board_game()
+            player_two_position = int(input("Player two, enter a number from one to nine: "))
+            player_two_position = player_two_position - 1
+            if board[player_two_position] == '-':
+                board[player_two_position] = 'X'
+            elif board[player_two_position] == 'O':
+            
+        except:
+            print("That spot is already taken")
+
+        board_game()
 player_turn()
+
+#checks if a player won or if the game is a tie
 
 
 
